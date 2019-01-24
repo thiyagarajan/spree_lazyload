@@ -7,6 +7,7 @@ Spree::BaseHelper.module_eval do
     options[:data] = { src: src}
     options[:class] ||= ""
     options[:class] = (options[:class].split(" ") + ["lazyload"]).join(" ")
+    options[:src] = path_to_image(options[:placeholder]) if options[:placeholder]
 
     unless src =~ /^(?:cid|data):/ || src.blank?
       options[:alt] = options.fetch(:alt){ image_alt(src) }
