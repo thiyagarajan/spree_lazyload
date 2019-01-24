@@ -3,13 +3,13 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_lazyload'
   s.version     = '3.0.10'
-  s.summary     = 'TODO: Add gem summary here'
-  s.description = 'TODO: Add (optional) gem description here'
+  s.summary     = 'Lazyload images'
+  s.description = ''
   s.required_ruby_version = '>= 2.1.0'
 
-  # s.author    = 'You'
-  # s.email     = 'you@example.com'
-  # s.homepage  = 'http://www.spreecommerce.com'
+  s.author    = 'Tomas Gunther'
+  s.email     = 'tpgunther@acid.cl'
+  s.homepage  = 'http://acidlabs.io'
   s.license = 'BSD-3'
 
   # s.files       = `git ls-files`.split("\n")
