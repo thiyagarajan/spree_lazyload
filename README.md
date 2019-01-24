@@ -1,7 +1,7 @@
 SpreeLazyload
 =============
 
-Add lazy_image_tag and lazy_#{style}_image for spree_product's styles with https://web.dev/fast/use-lazysizes-to-lazyload-images
+Add lazy images from https://web.dev/fast/use-lazysizes-to-lazyload-images
 
 ## Installation
 
@@ -15,12 +15,15 @@ Add lazy_image_tag and lazy_#{style}_image for spree_product's styles with https
   bundle install
   ```
 
-3. Copy
+3. Install gem or edit js file
+
+  Execute
+
   ```ruby
   bundle exec rails g spree_lazyload:install
   ```
 
-  or add to `vendor/assets/javascripts/spree/frontend/all.js`
+  Or add to `vendor/assets/javascripts/spree/frontend/all.js`
 
   ```js
   ...
@@ -31,6 +34,32 @@ Add lazy_image_tag and lazy_#{style}_image for spree_product's styles with https
 4. Restart your server
 
   If your server was running, restart it so that it can find the assets properly.
+
+## Usage
+
+1. Use `lazy_image_tag` rails helper:
+
+  ```ruby
+  <%= lazy_image_tag feature.image.url, :class => 'img-responsive', :alt => feature.title %>
+  ```
+
+2. Use spree_product's styles helpers:
+
+  ```ruby
+  # depends of the styles defined in your app
+  # defaults styles are:
+  <%= lazy_mini_image @product %>
+  <%= lazy_small_image @product %>
+  <%= lazy_product_image @product %>
+  <%= lazy_large_image @product %>
+  ```
+
+3. Use all images as lazy
+
+  ```ruby
+  # add to your initializer
+  Spree::Config[:all_images_lazy] = true
+  ```
 
 ## Contributing
 

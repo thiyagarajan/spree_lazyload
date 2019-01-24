@@ -1,5 +1,11 @@
 Spree::ProductsHelper.class_eval do
 
+  if Spree::Config[:all_images_lazy] == true
+    def image_tag(source, options = {})
+      lazy_image_tag(source, options)
+    end
+  end
+
   def lazy_image_tag(source, options={})
     options = options.symbolize_keys
 

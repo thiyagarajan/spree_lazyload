@@ -16,5 +16,15 @@ module SpreeLazyload
     end
 
     config.to_prepare &method(:activate).to_proc
+
+    initializer "spree.register.config", before: :load_config_initializers do |app|
+      Spree::AppConfiguration.class_eval do
+        preference :all_images_lazy, :boolean
+      end
+
+      Spree.config do |config|
+        config.all_images_lazy = false if config.all_images_lazy.nil?
+      end
+    end
   end
 end
