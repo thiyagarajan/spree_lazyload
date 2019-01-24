@@ -1,26 +1,31 @@
 SpreeLazyload
 =============
 
-Add lazy_image_tag and lazy_#{style}_image for spree products with https://web.dev/fast/use-lazysizes-to-lazyload-images
+Add lazy_image_tag and lazy_#{style}_image for spree_product's styles with https://web.dev/fast/use-lazysizes-to-lazyload-images
 
 ## Installation
 
 1. Add this extension to your Gemfile with this line:
   ```ruby
-  gem 'spree_lazyload', github: '[your-github-handle]/spree_lazyload', branch: '3-0-stable'
+  gem 'spree_lazyload', git: 'https://gitlab.k8s.acidlabs.io/spree-extensions/spree_lazyload', branch: '3-0-stable'
   ```
-
-  The `branch` option is important: it must match the version of Spree you're using.
-  For example, use `3-1-stable` if you're using Spree `3-1-stable` or any `3.1.x` version.
 
 2. Install the gem using Bundler:
   ```ruby
   bundle install
   ```
 
-3. Copy & run migrations
+3. Copy
   ```ruby
   bundle exec rails g spree_lazyload:install
+  ```
+
+  or add to `vendor/assets/javascripts/spree/frontend/all.js`
+
+  ```js
+  ...
+  //= require spree/frontend/spree_lazyload
+  ...
   ```
 
 4. Restart your server
