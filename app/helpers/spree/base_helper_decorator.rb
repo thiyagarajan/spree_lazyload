@@ -1,22 +1,5 @@
 Spree::BaseHelper.module_eval do
 
-  def lazy_image_tag(source, options={})
-    options = options.symbolize_keys
-
-    src = path_to_image(source)
-    options[:data] = { src: src}
-    options[:class] ||= ""
-    options[:class] = (options[:class].split(" ") + ["lazyload"]).join(" ")
-    options[:src] = path_to_image(options[:placeholder]) if options[:placeholder]
-
-    unless src =~ /^(?:cid|data):/ || src.blank?
-      options[:alt] = options.fetch(:alt){ image_alt(src) }
-    end
-
-    options[:width], options[:height] = extract_dimensions(options.delete(:size)) if options[:size]
-    tag("img", options)
-  end
-
   def create_product_lazy_image_tag(image, product, options, style)
     options.reverse_merge! alt: image.alt.blank? ? product.name : image.alt
     lazy_image_tag image.attachment.url(style), options

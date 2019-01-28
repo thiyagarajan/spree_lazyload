@@ -40,7 +40,7 @@ Add lazy images from https://web.dev/fast/use-lazysizes-to-lazyload-images
 1. Use `lazy_image_tag` rails helper:
 
   ```ruby
-  <%= lazy_image_tag "image.jpg", class: 'img-responsive', alt: "alt-title", placeholder: "placeholder.svg" %>
+  = lazy_image_tag "image.jpg", class: 'img-responsive', alt: "alt-title", placeholder: "placeholder.svg"
   ```
 
 2. Use spree_product's styles helpers:
@@ -48,24 +48,44 @@ Add lazy images from https://web.dev/fast/use-lazysizes-to-lazyload-images
   ```ruby
   # depends of the styles defined in your app
   # defaults styles are:
-  <%= lazy_mini_image @product, placeholder: "placeholder.svg" %>
-  <%= lazy_small_image @product, placeholder: "placeholder.svg" %>
-  <%= lazy_product_image @product, placeholder: "placeholder.svg" %>
-  <%= lazy_large_image @product, placeholder: "placeholder.svg" %>
+  = lazy_mini_image @product
+  = lazy_small_image @product
+  = lazy_product_image @product
+  = lazy_large_image @product
   ```
 
-3. Use all images as lazy
+3. Use all image_tag's images as lazy
 
   ```ruby
   # add to your initializer
   Spree::Config[:all_images_lazy] = true
 
-  ...
-  <%= image_tag "image.jpg", placeholder: "placeholder.svg" %>
-  ...
+  = image_tag "image.jpg"
   ```
 
-Also you could use the `placeholder` option to use a placeholder image when the image is being loaded
+## New Options
+
+- placeholder: default image while image is loading. It uses Rails assets path
+
+Example:
+
+  ```ruby
+  = lazy_image_tag @product.image, placeholder: "loader.svg"
+  ```
+
+- nolazy: if using `Spree::Config[:all_images_lazy] = true` you could add `nolazy: true` to use Rails `image_tag`
+
+Example:
+
+  ```ruby
+  # add to your initializer
+  Spree::Config[:all_images_lazy] = true
+
+  # Will use lazy image
+  = image_tag @product.image
+  # Will use Rails default image_tag
+  = image_tag @product.image, nolazy: true
+  ```
 
 ## Contributing
 
