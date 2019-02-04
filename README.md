@@ -15,20 +15,12 @@ Add lazy images from https://web.dev/fast/use-lazysizes-to-lazyload-images
   bundle install
   ```
 
-3. Install gem or edit js file
+3. Install gem
 
   Execute
 
   ```ruby
   bundle exec rails g spree_lazyload:install
-  ```
-
-  Or add to `vendor/assets/javascripts/spree/frontend/all.js`
-
-  ```js
-  ...
-  //= require spree/frontend/spree_lazyload
-  ...
   ```
 
 4. Restart your server
@@ -65,7 +57,7 @@ Add lazy images from https://web.dev/fast/use-lazysizes-to-lazyload-images
 
 ## New Options
 
-- placeholder: default image while image is loading. It uses Rails assets path
+- placeholder: default image while image is loading. It uses Rails assets path. The installation include a empty image as a placeholder for all images.
 
 Example:
 

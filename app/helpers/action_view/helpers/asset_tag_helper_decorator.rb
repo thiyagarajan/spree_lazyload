@@ -15,7 +15,11 @@ ActionView::Helpers::AssetTagHelper.module_eval do
     options[:data] = { src: src}
     options[:class] ||= ""
     options[:class] = (options[:class].split(" ") + ["lazyload"]).join(" ")
-    options[:src] = path_to_image(options.delete(:placeholder)) if options[:placeholder]
+    if options[:placeholder]
+      options[:src] = path_to_image(options.delete(:placeholder))
+    else
+      options[:src] = path_to_image("lazyload_placeholder.gif")
+    end
 
     unless src =~ /^(?:cid|data):/ || src.blank?
       options[:alt] = options.fetch(:alt){ image_alt(src) }
