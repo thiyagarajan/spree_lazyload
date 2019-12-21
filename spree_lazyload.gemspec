@@ -2,14 +2,14 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_lazyload'
-  s.version     = '3.0.10'
+  s.version     = '3.7.0'
   s.summary     = 'Lazyload images'
   s.description = ''
   s.required_ruby_version = '>= 2.1.0'
 
-  s.author    = 'Tomas Gunther'
-  s.email     = 'tpgunther@acid.cl'
-  s.homepage  = 'http://acidlabs.io'
+  s.author    = 'Thiyagarajan Veluchamy'
+  s.email     = 'thiyagarajannv@gmail.com'
+  s.homepage  = ''
   s.license = 'BSD-3'
 
   # s.files       = `git ls-files`.split("\n")
